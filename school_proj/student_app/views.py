@@ -10,3 +10,8 @@ class All_students(APIView):
         students = Student.objects.all()
         serialized_students = StudentAllSerializer(students, many=True)
         return Response(serialized_students.data)
+    
+class A_Student(APIView):
+    def get(self,request,id):
+        student = Student.objects.get(id = id)  
+        return Response(StudentAllSerializer(student).data)
